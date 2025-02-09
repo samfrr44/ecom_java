@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: ${DB_USER}
+    url: ${DB_URL}
+    password: ${DB_PWD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: 'true'
+    hibernate:
+      format_sql: true
+      ddl-auto: update
+    show-sql: true
