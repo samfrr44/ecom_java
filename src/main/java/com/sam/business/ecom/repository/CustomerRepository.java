@@ -1,10 +1,10 @@
-package com.sam.company.ecom.repository;
+package com.sam.business.ecom.repository;
 
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.sam.company.ecom.model.Customer;
+import com.sam.business.ecom.model.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 

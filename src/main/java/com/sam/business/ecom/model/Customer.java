@@ -1,37 +1,53 @@
-package com.sam.company.ecom.dto;
+package com.sam.business.ecom.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
+@Entity
+@Table(name = "customer", schema = "ecomm_java")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CustomerRequestDTO {
+public class Customer {
 
-    @JsonProperty("first_name")
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(name = "first_name")
     private String name;
 
-    @JsonProperty("last_name")
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "address2")
     private String address2;
 
+    @Column(name = "city")
     private String city;
 
+    @Column(name = "zipcode")
     private Integer zipcode;
 
+    @Column(name = "country")
     private String country;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "phone")
     private String phone;
 
-    public CustomerRequestDTO(String name, String lastName, String address, String address2, String city, Integer zipcode,
+    public Customer(String name, String lastName, String address, String address2, String city, Integer zipcode,
                     String country, String email, String phone) {
+//        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.address = address;
@@ -41,5 +57,6 @@ public class CustomerRequestDTO {
         this.country = country;
         this.email = email;
         this.phone = phone;
+
     }
 }

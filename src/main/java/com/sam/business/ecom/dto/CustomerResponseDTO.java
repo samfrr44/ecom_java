@@ -1,4 +1,4 @@
-package com.sam.company.ecom.dto;
+package com.sam.business.ecom.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

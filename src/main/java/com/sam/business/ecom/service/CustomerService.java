@@ -1,10 +1,10 @@
-package com.sam.company.ecom.service;
+package com.sam.business.ecom.service;
 
-import com.sam.company.ecom.dto.CustomerRequestDTO;
-import com.sam.company.ecom.dto.CustomerResponseDTO;
-import com.sam.company.ecom.model.Customer;
-import com.sam.company.ecom.repository.CustomerRepository;
-import com.sam.company.ecom.translator.CustomerTranslator;
+import com.sam.business.ecom.dto.CustomerRequestDTO;
+import com.sam.business.ecom.dto.CustomerResponseDTO;
+import com.sam.business.ecom.model.Customer;
+import com.sam.business.ecom.repository.CustomerRepository;
+import com.sam.business.ecom.translator.CustomerTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

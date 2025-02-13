@@ -1,8 +1,8 @@
-package com.sam.company.ecom.controller;
+package com.sam.business.ecom.controller;
 
-import com.sam.company.ecom.dto.CustomerRequestDTO;
-import com.sam.company.ecom.dto.CustomerResponseDTO;
-import com.sam.company.ecom.service.CustomerService;
+import com.sam.business.ecom.dto.CustomerRequestDTO;
+import com.sam.business.ecom.dto.CustomerResponseDTO;
+import com.sam.business.ecom.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
