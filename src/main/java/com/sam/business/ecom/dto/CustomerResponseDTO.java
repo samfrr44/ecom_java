@@ -1,6 +1,7 @@
 package com.sam.business.ecom.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sam.business.ecom.model.Customer;
 import lombok.*;
 
 import java.util.UUID;

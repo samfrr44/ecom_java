@@ -2,6 +2,7 @@ package com.sam.business.ecom.controller;
 
 import com.sam.business.ecom.dto.CustomerRequestDTO;
 import com.sam.business.ecom.dto.CustomerResponseDTO;
+import com.sam.business.ecom.dto.CustomerResponseDTO_ID;
 import com.sam.business.ecom.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,9 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@RequestMapping(value = "/save" , method = RequestMethod.POST)
-	public void save(@RequestBody CustomerRequestDTO customerRequestDTO){
-		customerService.saveNewCustomer(customerRequestDTO);
+	public CustomerResponseDTO_ID save(@RequestBody CustomerRequestDTO customerRequestDTO){
+		return customerService.saveNewCustomer(customerRequestDTO);
+
 	}
 
 //	@RequestMapping(value = "/all-details" , method = RequestMethod.GET)

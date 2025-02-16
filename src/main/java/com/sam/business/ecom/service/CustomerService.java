@@ -2,6 +2,7 @@ package com.sam.business.ecom.service;
 
 import com.sam.business.ecom.dto.CustomerRequestDTO;
 import com.sam.business.ecom.dto.CustomerResponseDTO;
+import com.sam.business.ecom.dto.CustomerResponseDTO_ID;
 import com.sam.business.ecom.model.Customer;
 import com.sam.business.ecom.repository.CustomerRepository;
 import com.sam.business.ecom.translator.CustomerTranslator;
@@ -18,9 +19,9 @@ public class CustomerService {
     @Autowired
     CustomerTranslator translator;
 
-    public void saveNewCustomer (CustomerRequestDTO customerRequestDTO){
+    public CustomerResponseDTO_ID saveNewCustomer (CustomerRequestDTO customerRequestDTO){
 
-        customerRepository.save(new Customer(
+        Customer new_customer = customerRepository.save(new Customer(
                 customerRequestDTO.getName(),
                 customerRequestDTO.getLastName(),
                 customerRequestDTO.getAddress(),
@@ -30,7 +31,10 @@ public class CustomerService {
                 customerRequestDTO.getCountry(),
                 customerRequestDTO.getEmail(),
                 customerRequestDTO.getPhone()
-                ));
+        ));
+
+        return translator.toDTO_ID(new_customer);
+
 
     }
     public CustomerResponseDTO findCustomerById(String id){
@@ -52,8 +56,8 @@ public class CustomerService {
     public void removeCustomer(UUID id){
         customerRepository.deleteById(id);
     }
-
-//   public CustomerResponseDTO create(CustomerRequestDTO dto) {
+//
+//   public CustomerResponseDTO saveNewCustomer(CustomerRequestDTO dto) {
 //        Customer entity = translator.toEntity(dto);
 //        return translator.toDTO(customerRepository.save(entity));
 //    }

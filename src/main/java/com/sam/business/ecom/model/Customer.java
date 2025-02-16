@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "customer", schema = "ecomm_java")
+@Table(name = "customer", schema = "business_model")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -47,7 +47,6 @@ public class Customer {
 
     public Customer(String name, String lastName, String address, String address2, String city, Integer zipcode,
                     String country, String email, String phone) {
-//        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.address = address;
