@@ -6,11 +6,17 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sam.business.ecom.model.Customer;
+import org.springframework.data.jpa.repository.Query;
 
 public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 
 
 //  List<Customer> saveNewCustomer(boolean String);
 
-//  List<Customer> findByNameContaining(String name);
+  List<Customer> findByZipcode(Integer zipcode);
+
+  List<Customer> findByName(String name);
+
+  @Query(nativeQuery = true)
+  List<Customer> findByCityOrderByName(String city);
 }

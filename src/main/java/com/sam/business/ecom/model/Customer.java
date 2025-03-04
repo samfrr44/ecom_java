@@ -9,6 +9,7 @@ import java.util.UUID;
 @Table(name = "customer", schema = "business_model")
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -45,17 +46,17 @@ public class Customer {
     @Column(name = "phone")
     private String phone;
 
-    public Customer(String name, String lastName, String address, String address2, String city, Integer zipcode,
-                    String country, String email, String phone) {
-        this.name = name;
-        this.lastName = lastName;
-        this.address = address;
-        this.address2 = address2;
-        this.city = city;
-        this.zipcode = zipcode;
-        this.country = country;
-        this.email = email;
-        this.phone = phone;
-
-    }
+//    public Customer(String name, String lastName, String address, String address2, String city, Integer zipcode,
+//                    String country, String email, String phone) {
+//        this.name = name;
+//        this.lastName = lastName;
+//        this.address = address;
+//        this.address2 = address2;
+//        this.city = city;
+//        this.zipcode = zipcode;
+//        this.country = country;
+//        this.email = email;
+//        this.phone = phone;
+//
+//    }
 }

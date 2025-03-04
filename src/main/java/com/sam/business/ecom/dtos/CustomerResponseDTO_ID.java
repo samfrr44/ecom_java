@@ -1,12 +1,12 @@
-package com.sam.business.ecom.dto;
+package com.sam.business.ecom.dtos;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.UUID;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

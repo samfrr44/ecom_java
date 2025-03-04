@@ -1,8 +1,8 @@
 package com.sam.business.ecom.controller;
 
-import com.sam.business.ecom.dto.CustomerRequestDTO;
-import com.sam.business.ecom.dto.CustomerResponseDTO;
-import com.sam.business.ecom.dto.CustomerResponseDTO_ID;
+import com.sam.business.ecom.dtos.CustomerRequestDTO;
+import com.sam.business.ecom.dtos.CustomerResponseDTO;
+import com.sam.business.ecom.dtos.CustomerResponseDTO_ID;
 import com.sam.business.ecom.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +28,14 @@ public class CustomerController {
 //		return customerService.getALlStudents();
 //	}
 
-	@RequestMapping(value = "/find/{id}" , method = RequestMethod.GET)
-	public CustomerResponseDTO getCustomer(@PathVariable("id") String id) {
+	@GetMapping("/{id}")
+	public CustomerResponseDTO getCustomerById(@PathVariable("id") String id) {
 		return customerService.findCustomerById(id);
+	}
+
+	@GetMapping("/zipcode/{zipcode}")
+	public CustomerResponseDTO getCustomerByZipcode(@PathVariable("zipcode") Integer zipcode) {
+		return (CustomerResponseDTO) customerService.findCustomerByZipcode(zipcode);
 	}
 
 	@RequestMapping(value = "delete/{id}" , method = RequestMethod.DELETE)
