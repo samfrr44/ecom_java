@@ -1,4 +1,4 @@
-package com.sam.company.ecom;
+package com.sam.business.ecom;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

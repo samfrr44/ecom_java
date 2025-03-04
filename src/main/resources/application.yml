@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   datasource:
     username: ${DB_USER}
     url: ${DB_URL}
@@ -12,5 +14,5 @@ spring:
             non_contextual_creation: 'true'
     hibernate:
       format_sql: true
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true

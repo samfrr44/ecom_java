@@ -1,13 +1,14 @@
-package com.sam.company.ecom;
+package com.sam.business.ecom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.github.cdimascio.dotenv.Dotenv;
 
 @SpringBootApplication
-public class run_ecom_api {
+public class Main {
 
 	public static void main(String[] args) {
-		SpringApplication.run(run_ecom_api.class, args);
+		SpringApplication.run(Main.class, args);
 	}
 
 }

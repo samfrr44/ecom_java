@@ -1,8 +1,9 @@
-package com.sam.company.ecom.translator;
+package com.sam.business.ecom.translator;
 
-import com.sam.company.ecom.dto.CustomerRequestDTO;
-import com.sam.company.ecom.dto.CustomerResponseDTO;
-import com.sam.company.ecom.model.Customer;
+import com.sam.business.ecom.dto.CustomerRequestDTO;
+import com.sam.business.ecom.dto.CustomerResponseDTO;
+import com.sam.business.ecom.dto.CustomerResponseDTO_ID;
+import com.sam.business.ecom.model.Customer;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,6 +25,11 @@ public class CustomerTranslator {
 			dto.setCountry(entity.getCountry());
 			dto.setEmail(entity.getEmail());
 			dto.setPhone(entity.getPhone());
+        return dto;
+    }
+    public CustomerResponseDTO_ID toDTO_ID(Customer entity) {
+        CustomerResponseDTO_ID dto = new CustomerResponseDTO_ID();
+        dto.setId(entity.getId());
         return dto;
     }
 }
