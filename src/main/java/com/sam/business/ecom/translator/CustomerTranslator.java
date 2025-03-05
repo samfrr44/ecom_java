@@ -1,14 +1,14 @@
 package com.sam.business.ecom.translator;
 
-import com.sam.business.ecom.dtos.CustomerRequestDTO;
-import com.sam.business.ecom.dtos.CustomerResponseDTO;
-import com.sam.business.ecom.dtos.CustomerResponseDTO_ID;
-import com.sam.business.ecom.model.Customer;
+import com.sam.business.ecom.dtos.CustomerRequestDto;
+import com.sam.business.ecom.dtos.CustomerResponseDto;
+import com.sam.business.ecom.dtos.Customer_IdResponseDto;
+import com.sam.business.ecom.models.Customer;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CustomerTranslator {
-    public Customer toEntity(CustomerRequestDTO dto){
+    public Customer toEntity(CustomerRequestDto dto){
         return Customer.builder()
                 .name(dto.getName())
                 .lastName(dto.getLastName())
@@ -21,8 +21,8 @@ public class CustomerTranslator {
                 .phone(dto.getPhone())
                 .build();
     }
-    public CustomerResponseDTO toDTO(Customer entity){
-        return CustomerResponseDTO.builder()
+    public CustomerResponseDto toDTO(Customer entity){
+        return CustomerResponseDto.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .lastName(entity.getLastName())
@@ -36,8 +36,8 @@ public class CustomerTranslator {
                 .build();
 
     }
-    public CustomerResponseDTO_ID toDTO_ID(Customer entity) {
-        return CustomerResponseDTO_ID.builder()
+    public Customer_IdResponseDto toDTO_ID(Customer entity) {
+        return Customer_IdResponseDto.builder()
                 .id(entity.getId())
                 .build();
 

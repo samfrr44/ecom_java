@@ -1,10 +1,10 @@
-package com.sam.business.ecom.service;
+package com.sam.business.ecom.services;
 
-import com.sam.business.ecom.dtos.CustomerRequestDTO;
-import com.sam.business.ecom.dtos.CustomerResponseDTO;
-import com.sam.business.ecom.dtos.CustomerResponseDTO_ID;
-import com.sam.business.ecom.model.Customer;
-import com.sam.business.ecom.repository.CustomerRepository;
+import com.sam.business.ecom.dtos.CustomerRequestDto;
+import com.sam.business.ecom.dtos.CustomerResponseDto;
+import com.sam.business.ecom.dtos.Customer_IdResponseDto;
+import com.sam.business.ecom.models.Customer;
+import com.sam.business.ecom.repositories.CustomerRepository;
 import com.sam.business.ecom.translator.CustomerTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class CustomerService {
     @Autowired
     CustomerTranslator translator;
 
-    public CustomerResponseDTO_ID saveNewCustomer (CustomerRequestDTO customerRequestDTO){
+    public Customer_IdResponseDto saveNewCustomer (CustomerRequestDto customerRequestDTO){
 
         Customer new_customer = customerRepository.save(Customer.builder()
                         .name(customerRequestDTO.getName())
@@ -40,9 +40,9 @@ public class CustomerService {
 
 
     }
-    public CustomerResponseDTO findCustomerById(String id){
+    public CustomerResponseDto findCustomerById(String id){
         Customer customer = customerRepository.findById(UUID.fromString(id)).get();
-        return new CustomerResponseDTO(
+        return new CustomerResponseDto(
                 customer.getId(),
                 customer.getName(),
                 customer.getLastName(),
@@ -56,9 +56,9 @@ public class CustomerService {
         );
     }
 
-    public List<CustomerResponseDTO> findCustomerByZipcode(Integer zipcode) {
+    public List<CustomerResponseDto> findCustomerByZipcode(Integer zipcode) {
         return customerRepository.findByZipcode(zipcode).stream()
-                .map(customer -> CustomerResponseDTO.builder()
+                .map(customer -> CustomerResponseDto.builder()
                         .name(customer.getName())
                         .lastName(customer.getLastName())
                         .address(customer.getAddress())
@@ -77,7 +77,7 @@ public class CustomerService {
         customerRepository.deleteById(id);
     }
 //
-//   public CustomerResponseDTO saveNewCustomer(CustomerRequestDTO dtos) {
+//   public CustomerResponseDto saveNewCustomer(CustomerRequestDto dtos) {
 //        Customer entity = translator.toEntity(dtos);
 //        return translator.toDTO(customerRepository.save(entity));
 //    }

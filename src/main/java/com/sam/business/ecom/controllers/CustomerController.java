@@ -1,9 +1,9 @@
-package com.sam.business.ecom.controller;
+package com.sam.business.ecom.controllers;
 
-import com.sam.business.ecom.dtos.CustomerRequestDTO;
-import com.sam.business.ecom.dtos.CustomerResponseDTO;
-import com.sam.business.ecom.dtos.CustomerResponseDTO_ID;
-import com.sam.business.ecom.service.CustomerService;
+import com.sam.business.ecom.dtos.CustomerRequestDto;
+import com.sam.business.ecom.dtos.CustomerResponseDto;
+import com.sam.business.ecom.dtos.Customer_IdResponseDto;
+import com.sam.business.ecom.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,7 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@RequestMapping(value = "/save" , method = RequestMethod.POST)
-	public CustomerResponseDTO_ID save(@RequestBody CustomerRequestDTO customerRequestDTO){
+	public Customer_IdResponseDto save(@RequestBody CustomerRequestDto customerRequestDTO){
 		return customerService.saveNewCustomer(customerRequestDTO);
 
 	}
@@ -29,13 +29,13 @@ public class CustomerController {
 //	}
 
 	@GetMapping("/{id}")
-	public CustomerResponseDTO getCustomerById(@PathVariable("id") String id) {
+	public CustomerResponseDto getCustomerById(@PathVariable("id") String id) {
 		return customerService.findCustomerById(id);
 	}
 
 	@GetMapping("/zipcode/{zipcode}")
-	public CustomerResponseDTO getCustomerByZipcode(@PathVariable("zipcode") Integer zipcode) {
-		return (CustomerResponseDTO) customerService.findCustomerByZipcode(zipcode);
+	public CustomerResponseDto getCustomerByZipcode(@PathVariable("zipcode") Integer zipcode) {
+		return (CustomerResponseDto) customerService.findCustomerByZipcode(zipcode);
 	}
 
 	@RequestMapping(value = "delete/{id}" , method = RequestMethod.DELETE)

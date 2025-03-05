@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CustomerRequestDTO {
+public class CustomerRequestDto {
 
     @JsonProperty("first_name")
     private String name;
@@ -30,7 +30,7 @@ public class CustomerRequestDTO {
 
     private String phone;
 
-//    public CustomerRequestDTO(String name, String lastName, String address, String address2, String city, Integer zipcode,
+//    public CustomerRequestDto(String name, String lastName, String address, String address2, String city, Integer zipcode,
 //                    String country, String email, String phone) {
 //        this.name = name;
 //        this.lastName = lastName;

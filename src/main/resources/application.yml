@@ -14,5 +14,13 @@ spring:
             non_contextual_creation: 'true'
     hibernate:
       format_sql: true
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
+security:
+  jwt:
+    secret-key: 0d1b902f51d86f865657a41a95004bd517f0d4a405363217755abdb0984061a7
+    expiration-time: 3600000 # 1h in milliseconds
+logging:
+  level:
+    org.springframework.security: DEBUG
+

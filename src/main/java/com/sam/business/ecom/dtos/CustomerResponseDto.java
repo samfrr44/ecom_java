@@ -11,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CustomerResponseDTO {
+public class CustomerResponseDto {
 
     private UUID id;
 
