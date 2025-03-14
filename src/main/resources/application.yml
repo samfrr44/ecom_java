@@ -12,13 +12,17 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: 'true'
+            default_schema: business_model
     hibernate:
       format_sql: true
       ddl-auto: update
     show-sql: true
+    open-in-view: false
+server:
+  port: 8080
 security:
   jwt:
-    secret-key: 0d1b902f51d86f865657a41a95004bd517f0d4a405363217755abdb0984061a7
+    secret-key: 0e69aa62916e10f9faa82520bbc79e7ae4ba24a151bae2b04aa0df12495c8584
     expiration-time: 3600000 # 1h in milliseconds
 logging:
   level:
