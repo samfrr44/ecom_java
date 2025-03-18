@@ -32,7 +32,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())  // Disable CSRF protection
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()  // Allow public access to /auth/**
+                        .requestMatchers("/auth/**", "/error").permitAll()  // Allow public access to /auth/**
                         .anyRequest().authenticated()  // Require authentication for other requests
                 )
                 .sessionManagement(session -> session

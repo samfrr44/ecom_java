@@ -18,6 +18,14 @@ spring:
       ddl-auto: update
     show-sql: true
     open-in-view: false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+#    exchange: my-exchange
+    queue: user-queue
+#    routing-key: my-routing-ke
 server:
   port: 8080
 security:
