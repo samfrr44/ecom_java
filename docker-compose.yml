@@ -1,0 +1,57 @@
+services:
+  app:
+#    image: ecom_java:latest
+    build: .
+    container_name: springboot_ecom_app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres_db
+      - rabbitmq
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/business_inc
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:4.0.7-alpine
+    container_name: rabbitmq_container
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - app-network
+    volumes:
+      - /c/apps/business_inc_data/rabbit_mq:/var/lib/rabbitmq
+
+  postgres_db:
+    image: postgres:17-alpine
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_DB: business_inc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - /c/apps/business_inc_data/postgres:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  postgres_data:
+  rabbitmq_data:

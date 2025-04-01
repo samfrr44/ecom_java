@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.sam.business</groupId>
 	<artifactId>ecom</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<name>ecom</name>
 	<description>Spring Boot, PostgreSQL example with Maven, Spring JPA</description>
 
