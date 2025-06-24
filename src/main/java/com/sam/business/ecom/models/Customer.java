@@ -1,4 +1,4 @@
-package com.sam.company.ecom.model;
+package com.sam.business.ecom.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,12 +6,13 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "customer", schema = "ecomm_java")
+@Table(name = "customer", schema = "business_model")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class Customer {
 
     @Id
@@ -22,16 +23,16 @@ public class Customer {
     private String name;
 
     @Column(name = "last_name")
-    private String lastName;
+    private String lname;
 
     @Column(name = "address")
     private String address;
 
-    @Column(name = "address2")
-    private String address2;
-
     @Column(name = "city")
     private String city;
+
+    @Column(name = "state")
+    private String state;
 
     @Column(name = "zipcode")
     private Integer zipcode;
@@ -45,18 +46,7 @@ public class Customer {
     @Column(name = "phone")
     private String phone;
 
-    public Customer(String name, String lastName, String address, String address2, String city, Integer zipcode,
+    public Customer(String name, String lname, String address, String city, String state, Integer zipcode,
                     String country, String email, String phone) {
-//        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.address = address;
-        this.address2 = address2;
-        this.city = city;
-        this.zipcode = zipcode;
-        this.country = country;
-        this.email = email;
-        this.phone = phone;
-
     }
 }
