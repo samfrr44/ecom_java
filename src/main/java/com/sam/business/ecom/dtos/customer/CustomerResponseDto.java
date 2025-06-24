@@ -1,4 +1,4 @@
-package com.sam.business.ecom.dtos;
+package com.sam.business.ecom.dtos.customer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -7,10 +7,10 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class CustomerResponseDto {
 
     private UUID id;
@@ -19,20 +19,24 @@ public class CustomerResponseDto {
     private String name;
 
     @JsonProperty("last_name")
-    private String lastName;
+    private String lname;
 
     private String address;
 
-    private String address2;
-
     private String city;
 
-    private Integer zipcode;
+    private String state;
 
     private String country;
+
+    private Integer zipcode;
 
     private String email;
 
     private String phone;
+
+    public CustomerResponseDto(UUID id, String name, String lname, String address, String city, String state,
+                               Integer zipcode, String country, String email, String phone) {
+    }
 
 }

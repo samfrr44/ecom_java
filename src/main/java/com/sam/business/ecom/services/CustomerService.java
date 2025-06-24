@@ -1,17 +1,14 @@
 package com.sam.business.ecom.services;
 
-import com.sam.business.ecom.dtos.CustomerRequestDto;
-import com.sam.business.ecom.dtos.CustomerResponseDto;
-import com.sam.business.ecom.dtos.Customer_IdResponseDto;
+import com.sam.business.ecom.dtos.customer.CustomerRequestDto;
+import com.sam.business.ecom.dtos.customer.CustomerResponseDto;
+import com.sam.business.ecom.dtos.customer.Customer_IdResponseDto;
 import com.sam.business.ecom.models.Customer;
 import com.sam.business.ecom.repositories.CustomerRepository;
-import com.sam.business.ecom.translator.CustomerTranslator;
+import com.sam.business.ecom.translators.CustomerTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -21,64 +18,49 @@ public class CustomerService {
     @Autowired
     CustomerTranslator translator;
 
-    public Customer_IdResponseDto saveNewCustomer (CustomerRequestDto customerRequestDTO){
+    public Customer_IdResponseDto createNewCustomer (CustomerRequestDto customerRequestDTO){
 
         Customer new_customer = customerRepository.save(Customer.builder()
-                        .name(customerRequestDTO.getName())
-                        .lastName(customerRequestDTO.getLastName())
-                        .address(customerRequestDTO.getAddress())
-                        .address2(customerRequestDTO.getAddress2())
-                        .city(customerRequestDTO.getCity())
-                        .zipcode(customerRequestDTO.getZipcode())
-                        .country(customerRequestDTO.getCountry())
-                        .email(customerRequestDTO.getEmail())
-                        .phone(customerRequestDTO.getPhone())
-                        .build()
+                .name(customerRequestDTO.getName())
+                .lname(customerRequestDTO.getLname())
+                .address(customerRequestDTO.getAddress())
+                .city(customerRequestDTO.getCity())
+                .state(customerRequestDTO.getState())
+                .zipcode(customerRequestDTO.getZipcode())
+                .country(customerRequestDTO.getCountry())
+                .email(customerRequestDTO.getEmail())
+                .phone(customerRequestDTO.getPhone())
+                .build()
         );
 
         return translator.toDTO_ID(new_customer);
-
-
     }
+
     public CustomerResponseDto findCustomerById(String id){
+
         Customer customer = customerRepository.findById(UUID.fromString(id)).get();
-        return new CustomerResponseDto(
-                customer.getId(),
-                customer.getName(),
-                customer.getLastName(),
-                customer.getAddress(),
-                customer.getAddress2(),
-                customer.getCity(),
-                customer.getZipcode(),
-                customer.getCountry(),
-                customer.getEmail(),
-                customer.getPhone()
-        );
+
+        return translator.toDTO(customer);
     }
 
-    public List<CustomerResponseDto> findCustomerByZipcode(Integer zipcode) {
-        return customerRepository.findByZipcode(zipcode).stream()
-                .map(customer -> CustomerResponseDto.builder()
-                        .name(customer.getName())
-                        .lastName(customer.getLastName())
-                        .address(customer.getAddress())
-                        .address2(customer.getAddress2())
-                        .city(customer.getCity())
-                        .zipcode(customer.getZipcode())
-                        .country(customer.getCountry())
-                        .email(customer.getEmail())
-                        .phone(customer.getPhone())
-                        .build()
-                )
-                        .collect(Collectors.toList());
+    public CustomerResponseDto updateCustomer(String id, CustomerRequestDto dto) {
+
+        Customer customer = customerRepository.findById(UUID.fromString(id)).get();
+        if (dto.getName() != null) customer.setName(dto.getName());
+        if (dto.getLname() != null) customer.setLname(dto.getLname());
+        if (dto.getAddress() != null) customer.setAddress(dto.getAddress());
+        if (dto.getCity() != null) customer.setCity(dto.getCity());
+        if (dto.getState() != null) customer.setState(dto.getState());
+        if (dto.getZipcode() != null) customer.setZipcode(dto.getZipcode());
+        if (dto.getCountry() != null) customer.setCountry(dto.getCountry());
+        if (dto.getEmail() != null) customer.setEmail(dto.getEmail());
+        if (dto.getPhone() != null) customer.setPhone(dto.getPhone());
+
+        return translator.toDTO(customerRepository.save(customer));
     }
 
-    public void removeCustomer(UUID id){
+    public void deleteCustomer(UUID id) {
         customerRepository.deleteById(id);
     }
-//
-//   public CustomerResponseDto saveNewCustomer(CustomerRequestDto dtos) {
-//        Customer entity = translator.toEntity(dtos);
-//        return translator.toDTO(customerRepository.save(entity));
-//    }
+
 }

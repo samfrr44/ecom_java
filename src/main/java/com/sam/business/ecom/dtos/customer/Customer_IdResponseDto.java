@@ -1,4 +1,4 @@
-package com.sam.business.ecom.dtos;
+package com.sam.business.ecom.dtos.customer;
 
 import lombok.*;
 

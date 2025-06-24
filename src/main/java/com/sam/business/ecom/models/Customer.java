@@ -23,16 +23,16 @@ public class Customer {
     private String name;
 
     @Column(name = "last_name")
-    private String lastName;
+    private String lname;
 
     @Column(name = "address")
     private String address;
 
-    @Column(name = "address2")
-    private String address2;
-
     @Column(name = "city")
     private String city;
+
+    @Column(name = "state")
+    private String state;
 
     @Column(name = "zipcode")
     private Integer zipcode;
@@ -46,17 +46,17 @@ public class Customer {
     @Column(name = "phone")
     private String phone;
 
-//    public Customer(String name, String lastName, String address, String address2, String city, Integer zipcode,
-//                    String country, String email, String phone) {
-//        this.name = name;
-//        this.lastName = lastName;
-//        this.address = address;
-//        this.address2 = address2;
-//        this.city = city;
-//        this.zipcode = zipcode;
-//        this.country = country;
-//        this.email = email;
-//        this.phone = phone;
-//
-//    }
+    public Customer(String name, String lname, String address, String state, String city, Integer zipcode,
+                    String country, String email, String phone) {
+        this.name = name;
+        this.lname = lname;
+        this.address = address;
+        this.state = state;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.country = country;
+        this.email = email;
+        this.phone = phone;
+
+    }
 }
