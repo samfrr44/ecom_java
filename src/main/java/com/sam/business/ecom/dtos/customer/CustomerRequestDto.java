@@ -1,6 +1,11 @@
+<<<<<<<< HEAD:src/main/java/com/sam/business/ecom/dtos/customer/CustomerRequestDto.java
 package com.sam.business.ecom.dtos.customer;
+========
+package com.sam.business.ecom.dto;
+>>>>>>>> origin/main:src/main/java/com/sam/business/ecom/dto/CustomerResponseDTO.java
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sam.business.ecom.model.Customer;
 import lombok.*;
 
 @Getter

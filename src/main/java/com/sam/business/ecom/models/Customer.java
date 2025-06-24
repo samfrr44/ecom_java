@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/com/sam/business/ecom/models/Customer.java
 package com.sam.business.ecom.models;
+========
+package com.sam.business.ecom.model;
+>>>>>>>> origin/main:src/main/java/com/sam/business/ecom/model/Customer.java
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -48,5 +52,18 @@ public class Customer {
 
     public Customer(String name, String lname, String address, String city, String state, Integer zipcode,
                     String country, String email, String phone) {
+<<<<<<<< HEAD:src/main/java/com/sam/business/ecom/models/Customer.java
+========
+        this.name = name;
+        this.lastName = lastName;
+        this.address = address;
+        this.address2 = address2;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.country = country;
+        this.email = email;
+        this.phone = phone;
+
+>>>>>>>> origin/main:src/main/java/com/sam/business/ecom/model/Customer.java
     }
 }
