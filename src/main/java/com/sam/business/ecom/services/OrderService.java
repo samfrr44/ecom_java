@@ -23,8 +23,8 @@ public class OrderService {
     public Order_IdResponseDto createNewOrder (OrderRequestDto orderRequestDTO){
 
         Order new_order = orderRepository.save(Order.builder()
-                .customer_id(orderRequestDTO.getCustomer_id().getCustomer_id())
-                .product_id(orderRequestDTO.getProduct_id().getProduct_id())
+                .customer_id(orderRequestDTO.getCustomer_id())
+                .product_id(orderRequestDTO.getProduct_id())
                 .quant(orderRequestDTO.getQuant())
                 .date(orderRequestDTO.getDate())
                 .build()
@@ -43,8 +43,8 @@ public class OrderService {
     public OrderResponseDto updateOrder(String id, OrderRequestDto dto) {
 
         Order order = orderRepository.findById(UUID.fromString(id)).get();
-        if (dto.getCustomer_id() != null) order.setCustomer_id(dto.getCustomer_id().getCustomer_id());
-        if (dto.getProduct_id() != null) order.setProduct_id(dto.getProduct_id().getProduct_id());
+        if (dto.getCustomer_id() != null) order.setCustomer_id(dto.getCustomer_id());
+        if (dto.getProduct_id() != null) order.setProduct_id(dto.getProduct_id());
         if (dto.getQuant() != null) order.setQuant(dto.getQuant());
         if (dto.getDate() != null) order.setDate(dto.getDate());
 
